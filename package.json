@@ -1,0 +1,33 @@
+{
+  "name": "grunt-test",
+  "version": "1.0.0",
+  "description": "自动合并压缩，雪碧图\r 自动合并压缩，雪碧图",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niweisi/grunt-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/niweisi/grunt-test/issues"
+  },
+  "homepage": "https://github.com/niweisi/grunt-test#readme",
+  "devDependencies": {
+    "grunt": "^1.4.1",
+    "grunt-contrib-clean": "^2.0.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-less": "^3.0.0",
+    "grunt-contrib-uglify": "^5.0.1",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-css": "^0.5.4",
+    "grunt-css-sprite": "^0.2.2",
+    "grunt-filerev": "^2.3.1",
+    "grunt-usemin": "^3.1.1"
+  },
+  "dependencies": {}
+}

@@ -22,13 +22,13 @@ module.exports = function (grunt) {
             options: {
                 separator: ';'
             },
-            // dist: {
-            //     src: ['dev/source/js/*/*.js'],
-            //     dest: 'dev/asset/js/*/libs.js',
-            // },
-            index: {
-                src: ['dev/source/js/index/*.js'],
-                dest: 'dev/asset/js/index/libs.js',
+            dist: {
+                src: ['js_source/script.js'],
+                dest: 'js/libs.js'
+            },
+            test: {
+                src: ['js_source/test*.js'],
+                dest: 'js/test.js'
             },
             /*css:{
               src:['css/style.css'],
@@ -38,8 +38,8 @@ module.exports = function (grunt) {
         uglify: {
             options: {},
             build: {
-                src: '<%= path.dest %>/**/*.js',
-                dest: '<%= path.dest %>/<%= pkg.file %>.min.js'
+                src: 'js/libs.js',
+                dest: 'js/libs.min.js'
             }
         },
         less: {
@@ -61,7 +61,7 @@ module.exports = function (grunt) {
         },
         watch: {
             scripts: {
-                files: ['dev/source/**'],
+                files: ['less/style.less', 'js_source/*.js'],
                 tasks: ['task'],
                 options: {
                     spawn: false,
@@ -109,18 +109,6 @@ module.exports = function (grunt) {
                 }]
             }
         },
-        copy: { //复制文件
-            build: {
-                files: [
-                    {
-                        expand: true,//为true启用cwd,src,dest选项
-                        cwd: 'dev/', //所有src指定的匹配都将相对于此处指定的路径（但不包括此路径）
-                        src: ['**/*.*', '!source/**'], //相对于cwd路径的匹配模式。意思就是 src/**/*.*，匹配src下面所有文件
-                        dest: '<%= path.dest %>/' //目标文件路径前缀。
-                    }
-                ]
-            }
-        },
         filerev: {//对css和js文件重命名
             build: {
                 files: [
@@ -146,16 +134,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-css-sprite');
     grunt.loadNpmTasks('grunt-filerev');
     grunt.loadNpmTasks('grunt-usemin');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-copy');
     // 默认任务
-
-    grunt.registerTask('default', ['sprite', 'task', 'watch']);
-    grunt.registerTask('task', ['concat']);
-    grunt.registerTask('build', ['clean', 'task', 'copy', 'uglify']);
-
-
-    grunt.registerTask('task1', ['concat', 'uglify', 'less', 'cssmin']);
+    grunt.registerTask('task', ['concat', 'uglify', 'less', 'cssmin']);
     grunt.registerTask('task2', ['concat:test', 'filerev']);
+    grunt.registerTask('default', ['sprite', 'task', 'watch']);
 
 }
